@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CashCtrl-AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            ink: {
+              950: '#070b14',
+              900: '#0c1222',
+              800: '#151c2e',
+              700: '#1e2940',
+            },
+            brand: {
+              50: '#edfbf7',
+              100: '#d2f5ea',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0f766e',
+              700: '#115e59',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c1222'/%3E%3Cpath d='M21.5 11.2a7.2 7.2 0 1 0 .2 9.7' fill='none' stroke='%232dd4bf' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">C</div>
+        <div>
+          <div class="brand-title">CashCtrl-AI</div>
+          <div class="brand-sub">Lokale Buchhaltungs-Intelligenz</div>
+        </div>
+      </div>
+
+      <nav class="nav" id="main-nav">
+        <a href="#/dashboard" data-route="dashboard" class="nav-item">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13h6V4H4v9zm10 7h6V4h-6v16zM4 20h6v-5H4v5z"/></svg>
+          </span>
+          Dashboard
+        </a>
+        <a href="#/review" data-route="review" class="nav-item">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </span>
+          <span>
+            <span class="nav-kicker">Modul 1</span>
+            Buchhaltungs-Review
+          </span>
+        </a>
+        <a href="#/upload" data-route="upload" class="nav-item">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 20h16"/></svg>
+          </span>
+          <span>
+            <span class="nav-kicker">Modul 2</span>
+            Beleg-Upload
+          </span>
+        </a>
+        <a href="#/settings" data-route="settings" class="nav-item">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.7.9 1.1 1.6 1.2H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          </span>
+          Einstellungen
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="status-pill" id="sidebar-status">
+          <span class="status-dot"></span>
+          <span id="sidebar-status-text">Verbindung prüfen…</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow" id="page-eyebrow">Übersicht</div>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        <div class="topbar-meta" id="topbar-meta"></div>
+      </header>
+      <section id="view" class="view"></section>
+    </main>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root"></div>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

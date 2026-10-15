@@ -1,0 +1,28 @@
+{
+  "name": "cashctrl-ai",
+  "version": "1.0.0",
+  "description": "CashCtrl-AI – lokale Web-Anwendung für Buchhaltungs-Review und Belegverbuchung",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --experimental-sqlite server.js",
+    "dev": "node --watch --experimental-sqlite server.js",
+    "test": "node --experimental-sqlite --test src/*.test.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "cashctrl",
+    "buchhaltung",
+    "cashctrl-ai"
+  ],
+  "author": "CashCtrl-AI",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.8.4",
+    "express": "^4.21.2",
+    "multer": "1.4.5-lts.2",
+    "pdf-parse": "1.1.1"
+  }
+}
